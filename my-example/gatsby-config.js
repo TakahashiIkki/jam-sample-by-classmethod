@@ -1,3 +1,9 @@
+//dotenvで環境変数セット
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -30,5 +36,15 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    {
+      resolve: "gatsby-source-microcms",
+      options: {
+        apiKey: process.env.X_API_KEY,
+        serviceId: process.env.SERVICE_ID,
+        apis: [{
+          endpoint: 'news',
+        }],
+      },
+    },
   ],
 }
