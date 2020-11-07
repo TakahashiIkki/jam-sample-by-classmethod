@@ -1,0 +1,1 @@
+# jam-sample-by-classmethod
