@@ -44,4 +44,3 @@ jobs:
           S3_CONTENTS_BUCKET: ${{ secrets.S3_CONTENTS_BUCKET }}
         run: |
           aws s3 sync ./my-example/public s3://$S3_CONTENTS_BUCKET/ --quiet
-        working-directory: ./my-example
