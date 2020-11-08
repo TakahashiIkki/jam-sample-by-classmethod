@@ -26,11 +26,13 @@ jobs:
           node-version: '14.x'
       - name: install modules
         run: npm install
+        working-directory: ./my-example
       - name: build gatsby
         run: npm run build
         env:
           X_API_KEY: ${{ secrets.X_API_KEY }}
           SERVICE_ID: ${{ secrets.SERVICE_ID }}
+        working-directory: ./my-example
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -42,3 +44,4 @@ jobs:
           S3_CONTENTS_BUCKET: ${{ secrets.S3_CONTENTS_BUCKET }}
         run: |
           aws s3 sync ./public s3://$S3_CONTENTS_BUCKET/ --quiet
+        working-directory: ./my-example
